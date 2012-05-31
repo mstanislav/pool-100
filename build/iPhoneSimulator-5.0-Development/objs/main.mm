@@ -13,7 +13,7 @@ extern "C" {
     void rb_rb2oc_exc_handler(void);
     void rb_exit(int);
 void MREP_C2DD98F1EEA1459BBC0962B22AFC92D3(void *, void *);
-void MREP_E143453801424D5A8F799499AF47D936(void *, void *);
+void MREP_3B64D1EB17B544B389F2920A4E34C46F(void *, void *);
 }
 int
 main(int argc, char **argv)
@@ -27,7 +27,7 @@ main(int argc, char **argv)
     try {
         void *self = rb_vm_top_self();
 MREP_C2DD98F1EEA1459BBC0962B22AFC92D3(self, 0);
-MREP_E143453801424D5A8F799499AF47D936(self, 0);
+MREP_3B64D1EB17B544B389F2920A4E34C46F(self, 0);
         retval = UIApplicationMain(argc, argv, nil, @"AppDelegate");
         rb_exit(retval);
     }
