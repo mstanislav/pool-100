@@ -3,7 +3,7 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.rootViewController = UINavigationController.alloc.initWithRootViewController(PoolController.alloc.init)
     @window.rootViewController.wantsFullScreenLayout = true
-    @window.makeKeyAndVisible    
+    @window.makeKeyAndVisible
 
     @window.rootViewController.navigationBar.topItem.title = "Pool to 100"
     @window.rootViewController.navigationBar.topItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Settings", style: 0, target: self, action: "settings")
