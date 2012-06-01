@@ -1,22 +1,25 @@
 class PoolController < UIViewController
-  $name = 'Lucky Player'
-  $score = 0
+  def loadView
+    self.view = UIView.alloc.init
+  end
 
   def viewDidLoad
+    navigationItem.title = "Pool to 100"
+    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Players", style: 0, target: self, action: "players")
     show_name
     show_score
     show_buttons
   end
 
   def show_name
-    $name_label = UILabel.new
-    $name_label.font = UIFont.systemFontOfSize(30)
-    $name_label.text = "Hi, #{$name}"
-    $name_label.textAlignment = UITextAlignmentCenter
-    $name_label.textColor = UIColor.whiteColor
-    $name_label.backgroundColor = UIColor.clearColor
-    $name_label.frame = [[10, 5], [view.frame.size.width - 10 * 2, 40]]
-    view.addSubview($name_label)
+    @name_label = UILabel.new
+    @name_label.font = UIFont.systemFontOfSize(30)
+    @name_label.text = "Hi, #{$name}"
+    @name_label.textAlignment = UITextAlignmentCenter
+    @name_label.textColor = UIColor.whiteColor
+    @name_label.backgroundColor = UIColor.clearColor
+    @name_label.frame = [[10, 5], [300, 40]]
+    view.addSubview(@name_label)
   end
 
   def show_score
@@ -26,7 +29,7 @@ class PoolController < UIViewController
     state.textAlignment = UITextAlignmentLeft
     state.textColor = UIColor.whiteColor
     state.backgroundColor = UIColor.clearColor
-    state.frame = [[10, 75], [view.frame.size.width - 10 * 2, 40]]
+    state.frame = [[10, 75], [300, 40]]
     view.addSubview(state)
 
     @score_label = UILabel.new
@@ -35,7 +38,7 @@ class PoolController < UIViewController
     @score_label.textAlignment = UITextAlignmentCenter
     @score_label.textColor = UIColor.greenColor
     @score_label.backgroundColor = UIColor.clearColor
-    @score_label.frame = [[10, 135], [view.frame.size.width - 10 * 2, 80]]
+    @score_label.frame = [[10, 135], [300, 80]]
     view.addSubview(@score_label)
   end
 
@@ -46,7 +49,7 @@ class PoolController < UIViewController
     state.textAlignment = UITextAlignmentCenter
     state.textColor = UIColor.whiteColor
     state.backgroundColor = UIColor.clearColor
-    state.frame = [[10, 230], [view.frame.size.width - 10 * 2, 40]]
+    state.frame = [[10, 230], [300, 40]]
     view.addSubview(state)
   
     add_button("+1", 60, 270)
@@ -83,6 +86,12 @@ class PoolController < UIViewController
       $score = $score - 100
     end
   end
+
+ def show_player(player)
+  $score = player.score
+  @score_label.text = $score.to_s
+  @name_label.text = player.name
+ end
 
 private
   def add_button(name, x, y)
