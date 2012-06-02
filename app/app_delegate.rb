@@ -4,15 +4,7 @@ class AppDelegate
     @window.rootViewController = UINavigationController.alloc.initWithRootViewController(PlayersController.alloc.init)
     @window.rootViewController.wantsFullScreenLayout = true
     @window.makeKeyAndVisible
-
-    return true
-  end
-  
-  def players
-    playersController = PlayersController.alloc.init
-    playersController.window = @window
-    @window.rootViewController.pushViewController(playersController, animated: true)
-    @window.rootViewController.navigationBar.topItem.title = "Players"
+    true
   end
 
   def player_controller
