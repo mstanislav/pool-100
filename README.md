@@ -14,3 +14,11 @@ Screenshots
 -----------
 ![Player Configuration](/mstanislav/pool-100/raw/master/misc/Pool-100-Players.png)
 ![Score Keeping](/mstanislav/pool-100/raw/master/misc/Pool-100-Scoring.png)
+
+Changelog
+---------
+- v1.4: Added a pool table image and organized point buttons for the respective pool pocket
+- v1.3: Integrated multiplayer support
+- v1.2: Settings tab for player name configuration
+- v1.1: In-line user-configured player name
+- v1.0: Initial score keeping functionality with a static player name
