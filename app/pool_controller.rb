@@ -1,11 +1,13 @@
 class PoolController < UIViewController
   def loadView
-    self.view = UIView.alloc.init
+    self.view = UIImageView.alloc.init
   end
 
   def viewDidLoad
-    navigationItem.title = "Pool to 100"
-    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Back", style: 0, target: self, action: "cancel")
+    navigationItem.title = 'Pool to 100'
+    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle('Back', style: 0, target: self, action: 'cancel')
+    view.image = UIImage.imageNamed('PoolTable.png')
+    view.userInteractionEnabled = 'YES' 
     show_name
     show_score
     show_buttons
@@ -25,47 +27,45 @@ class PoolController < UIViewController
     @name_label.textAlignment = UITextAlignmentCenter
     @name_label.textColor = UIColor.whiteColor
     @name_label.backgroundColor = UIColor.clearColor
-    @name_label.frame = [[10, 5], [300, 40]]
+    @name_label.frame = [[10, 110], [300, 40]]
     view.addSubview(@name_label)
   end
 
   def show_score
     state = UILabel.new
-    state.font = UIFont.systemFontOfSize(24)
+    state.font = UIFont.systemFontOfSize(22)
     state.text = 'Your Current Score Is...'
-    state.textAlignment = UITextAlignmentLeft
     state.textColor = UIColor.whiteColor
     state.backgroundColor = UIColor.clearColor
-    state.frame = [[10, 75], [300, 40]]
+    state.frame = [[45, 150], [300, 40]]
     view.addSubview(state)
 
     @score_label = UILabel.new
     @score_label.font = UIFont.systemFontOfSize(80)
     @score_label.text = @score.to_s
     @score_label.textAlignment = UITextAlignmentCenter
-    @score_label.textColor = UIColor.greenColor
+    @score_label.textColor = UIColor.whiteColor
     @score_label.backgroundColor = UIColor.clearColor
-    @score_label.frame = [[10, 135], [300, 80]]
+    @score_label.frame = [[10, 215], [300, 80]]
     view.addSubview(@score_label)
   end
 
   def show_buttons
-    state = UILabel.new
-    state.font = UIFont.systemFontOfSize(24)
-    state.text = 'Adjust Your Score'
-    state.textAlignment = UITextAlignmentCenter
-    state.textColor = UIColor.whiteColor
-    state.backgroundColor = UIColor.clearColor
-    state.frame = [[10, 230], [300, 40]]
-    view.addSubview(state)
-  
-    add_button("+1", 60, 270)
-    add_button("+2", 140, 270)
-    add_button("+3", 220, 270)
-    add_button("+5", 60, 320)
-    add_button("+10", 140, 320)
-    add_button("+15", 220, 320)
-    add_button("-5", 140, 370)
+    add_button('3', 18, 8)
+    add_button('2', 280, 8)
+    add_button('15', 7, 192)
+    add_button('10', 287, 192)
+    add_button('5', 18, 377)
+    add_button('1', 280, 377)
+    minus_button
+  end
+
+  def minus_button
+    button = UIButton.buttonWithType UIButtonTypeRoundedRect
+    button.addTarget(self, action: 'adjust_score:', forControlEvents: UIControlEventTouchDown)
+    button.setTitle('-5', forState: UIControlStateNormal)
+    button.frame = CGRectMake(120, 340, 80, 30)
+    view.addSubview(button)
   end
 
   def adjust_score(sender)
@@ -78,19 +78,11 @@ class PoolController < UIViewController
 
   def check_score
     if @score == 100
-      alert = UIAlertView.new
-      alert.title = "Game Over"
-      alert.message = "Congratulations, you won!"
-      alert.addButtonWithTitle("OK")
-      alert.show
+      show_alert('Game Over', 'Congratulations, you won!', 'OK')
       @score = 0
       @score_label.text = @score.to_s
     elsif @score > 100
-      alert = UIAlertView.new
-      alert.title = "Doh!"
-      alert.message = "You went over 100 points and your score has wrapped..."
-      alert.addButtonWithTitle("Argh!")
-      alert.show
+      show_alert('Doh!', 'You went over 100 points and your score has wrapped...', 'Argh!')
       @score = @score - 100
     end
   end
@@ -105,10 +97,19 @@ class PoolController < UIViewController
 
 private
   def add_button(name, x, y)
-    button = UIButton.buttonWithType UIButtonTypeRoundedRect
-    button.addTarget(self, action:"adjust_score:", forControlEvents: UIControlEventTouchDown)
+    button = UIButton.buttonWithType UIButtonTypeCustom
+    button.addTarget(self, action: 'adjust_score:', forControlEvents: UIControlEventTouchDown)
     button.setTitle(name, forState: UIControlStateNormal)
-    button.frame = CGRectMake(x, y, 40, 40)
+    button.backgroundColor = UIColor.clearColor
+    button.frame = CGRectMake(x, y, 28, 28)
     view.addSubview(button)
+  end
+
+  def show_alert(title, message, button)
+    alert = UIAlertView.new
+    alert.title = title
+    alert.message = message
+    alert.addButtonWithTitle(button)
+    alert.show
   end
 end
