@@ -5,7 +5,7 @@ class PoolController < UIViewController
 
   def viewDidLoad
     navigationItem.title = "Pool to 100"
-    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemCancel, target:self, action:'cancel')
+    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Back", style: 0, target: self, action: "cancel")
     show_name
     show_score
     show_buttons

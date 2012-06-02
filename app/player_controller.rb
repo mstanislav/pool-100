@@ -3,6 +3,7 @@ class PlayerController < UIViewController
 
   def loadView
     self.view = UIView.alloc.init
+    self.view.backgroundColor = UIColor.whiteColor
   end
 
   def viewDidLoad
@@ -15,7 +16,6 @@ class PlayerController < UIViewController
     navigationItem.title = 'New Player'
     navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemCancel, target:self, action:'cancel')
     navigationItem.rightBarButtonItem = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemSave, target:self, action:'save')
-
     navigationController.setNavigationBarHidden(false, animated:true)
 
     @name.text = nil
@@ -44,7 +44,6 @@ private
     text_field.placeholder = params[:placeholder]
     text_field.textAlignment = UITextAlignmentCenter
     text_field.textColor = UIColor.blackColor
-    text_field.backgroundColor = UIColor.grayColor
     text_field.borderStyle = UITextBorderStyleRoundedRect
     text_field.keyboardType = params[:keyboardType] if params[:keyboardType]
     text_field.frame = params[:frame]
