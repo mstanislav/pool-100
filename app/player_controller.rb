@@ -37,7 +37,6 @@ class PlayerController < UIViewController
   end
 
 private
-
   def create_text_field(params)
     text_field = UITextField.new
     text_field.font = UIFont.systemFontOfSize(20)
