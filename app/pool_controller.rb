@@ -5,7 +5,7 @@ class PoolController < UIViewController
 
   def viewDidLoad
     navigationItem.title = "Pool to 100"
-    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Players", style: 0, target: self, action: "players")
+    navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemCancel, target:self, action:'cancel')
     show_name
     show_score
     show_buttons
@@ -66,6 +66,7 @@ class PoolController < UIViewController
     $score += value.to_i    
     check_score
     @score_label.text = $score.to_s
+    save
   end
 
   def check_score
@@ -87,11 +88,20 @@ class PoolController < UIViewController
     end
   end
 
- def show_player(player)
-  $score = player.score
-  @score_label.text = $score.to_s
-  @name_label.text = player.name
- end
+  def show_player(player)
+    @player = player
+    $score = player.score
+    @score_label.text = $score.to_s
+    @name_label.text = player.name
+  end
+
+  def save
+    @player.score = $score
+  end
+
+  def cancel
+    navigationController.popViewControllerAnimated(true)
+  end
 
 private
   def add_button(name, x, y)
