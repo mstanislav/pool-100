@@ -52,7 +52,6 @@ class PlayersController < UITableViewController
   end
 
 private
-
   def get_row(row)
     PlayersStore.shared.players[row]
   end

@@ -11,6 +11,13 @@ class PoolController < UIViewController
     show_buttons
   end
 
+  def show_player(player)
+    @player = player
+    @score = player.score
+    @score_label.text = @score.to_s
+    @name_label.text = player.name
+  end
+
   def show_name
     @name_label = UILabel.new
     @name_label.font = UIFont.systemFontOfSize(30)
@@ -34,7 +41,7 @@ class PoolController < UIViewController
 
     @score_label = UILabel.new
     @score_label.font = UIFont.systemFontOfSize(80)
-    @score_label.text = $score.to_s
+    @score_label.text = @score.to_s
     @score_label.textAlignment = UITextAlignmentCenter
     @score_label.textColor = UIColor.greenColor
     @score_label.backgroundColor = UIColor.clearColor
@@ -63,40 +70,33 @@ class PoolController < UIViewController
 
   def adjust_score(sender)
     value = sender.titleForState(UIControlStateNormal)
-    $score += value.to_i    
+    @score += value.to_i    
     check_score
-    @score_label.text = $score.to_s
+    @score_label.text = @score.to_s
     save
   end
 
   def check_score
-    if $score == 100
+    if @score == 100
       alert = UIAlertView.new
       alert.title = "Game Over"
       alert.message = "Congratulations, you won!"
       alert.addButtonWithTitle("OK")
       alert.show
-      $score = 0
-      @score_label.text = $score.to_s
-    elsif $score > 100
+      @score = 0
+      @score_label.text = @score.to_s
+    elsif @score > 100
       alert = UIAlertView.new
       alert.title = "Doh!"
       alert.message = "You went over 100 points and your score has wrapped..."
       alert.addButtonWithTitle("Argh!")
       alert.show
-      $score = $score - 100
+      @score = @score - 100
     end
   end
 
-  def show_player(player)
-    @player = player
-    $score = player.score
-    @score_label.text = $score.to_s
-    @name_label.text = player.name
-  end
-
   def save
-    @player.score = $score
+    @player.score = @score
   end
 
   def cancel
