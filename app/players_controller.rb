@@ -24,13 +24,14 @@ class PlayersController < UITableViewController
   CellID = 'CellIdentifier'
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
     cell = tableView.dequeueReusableCellWithIdentifier(CellID) || begin
-      cell = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:CellID)
+      cell = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleValue1, reuseIdentifier:CellID)
       cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton
       cell
     end
     player = get_row(indexPath.row)
 
     cell.textLabel.text = player.name
+    cell.detailTextLabel.text = player.score.to_s
     cell
   end
 
