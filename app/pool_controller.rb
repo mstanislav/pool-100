@@ -78,7 +78,7 @@ class PoolController < UIViewController
 
   def check_score
     if @score == 100
-      show_alert('Game Over', 'Congratulations, you won!', 'OK')
+      show_alert('Game Over', "Congratulations, #{@name_label.text}, you won!", 'OK')
       @score = 0
       @score_label.text = @score.to_s
     elsif @score > 100
