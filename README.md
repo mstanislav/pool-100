@@ -17,6 +17,7 @@ Screenshots
 
 Changelog
 ---------
+- v1.6: Added a rules screen to help players understand how to play the game
 - v1.5: Added scoring information to the Players view and included app icons
 - v1.4: Added a pool table image and organized point buttons for the respective pool pocket
 - v1.3: Integrated multiplayer support

@@ -6,6 +6,7 @@ class PoolController < UIViewController
   def viewDidLoad
     navigationItem.title = 'Pool to 100'
     navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle('Back', style: 0, target: self, action: 'cancel')
+    navigationItem.rightBarButtonItem = UIBarButtonItem.alloc.initWithTitle('Rules', style: 0, target: self, action: 'rules')
     view.image = UIImage.imageNamed('PoolTable.png')
     view.userInteractionEnabled = 'YES' 
     show_name
@@ -93,6 +94,11 @@ class PoolController < UIViewController
 
   def cancel
     navigationController.popViewControllerAnimated(true)
+  end
+
+  def rules
+    controller = UIApplication.sharedApplication.delegate.rules_controller
+    navigationController.pushViewController(controller, animated:true)
   end
 
 private

@@ -14,4 +14,8 @@ class AppDelegate
   def pool_controller
     @pool_controller ||= PoolController.alloc.init
   end
+
+  def rules_controller
+    @rules_controller ||= RulesController.alloc.init
+  end
 end
