@@ -12,8 +12,8 @@ Feel free to modify the rules or read someone else's rules online (also sometime
 
 Screenshots
 -----------
-![Player Configuration](/mstanislav/pool-100/raw/master/misc/Pool-100-Players.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![Score Keeping](/mstanislav/pool-100/raw/master/misc/Pool-100-Scoring.png)
+![Player Configuration](raw/master/misc/Pool-100-Players.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Score Keeping](raw/master/misc/Pool-100-Scoring.png)
 
 Changelog
 ---------
